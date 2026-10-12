@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Cacau Adventure: uma aventura de plataforma no parque.">
+  <title>Cacau Adventure | Fase 1</title>
+  <link rel="stylesheet" href="css/style.css?v=16">
+</head>
+
+<body>
+  <main class="game-shell">
+    <header class="topbar">
+      <div class="brand"><span class="brand-mark">🐾</span>
+        <div>
+          <p class="eyebrow">Uma aventura no parque</p>
+          <h1>Cacau <em>Adventure</em></h1>
+        </div>
+      </div>
+      <div class="stats" aria-label="Placar">
+        <span>♥ <b id="lives">3</b></span><span>★ <b id="snacks">0</b></span><span>🦴 <b id="bones">0</b></span><span>⏱
+          <b id="timer">0:00</b></span>
+      </div>
+    </header>
+    <section class="game-card">
+      <div class="hud"><span>FASE 1 <small>• Primeiros passos</small></span><span id="status">Explorando</span><button
+          id="sound-toggle" class="sound-toggle" type="button">Som: ligado</button></div>
+      <div class="canvas-frame"><canvas id="game" aria-label="Jogo de plataforma Cacau Adventure"></canvas><img
+          id="cacau-sprite-source" src="assets/cacau-sprite.png?v=7" alt="" hidden><img id="flag-source"
+          src="assets/flag-final.png?v=2" alt="" hidden>
+        <div id="overlay" class="overlay hidden">
+          <div>
+            <p id="overlay-kicker" class="overlay-kicker">FASE 1</p><img id="game-logo" class="game-logo"
+              src="assets/cacau-adventure-logo.png?v=5" alt="Cacau Adventure">
+            <div id="overlay-icon" class="overlay-icon">🐾</div>
+            <h2 id="overlay-title">Cacau Adventure</h2>
+            <p id="overlay-text">Ajude a Cacau a encontrar seu brinquedo favorito no parque.</p>
+            <div class="overlay-actions"><button id="restart">Começar a aventura</button><button id="credits-button"
+                class="secondary" type="button">Créditos</button></div>
+          </div>
+        </div>
+        <div id="credits-overlay" class="overlay hidden">
+          <div>
+            <p class="overlay-kicker">CRÉDITOS</p><img class="game-logo credits-logo"
+              src="assets/cacau-adventure-logo.png?v=5" alt="Cacau Adventure">
+            <p class="credits-version">v0.1.0</p>
+            <dl class="credits-list">
+              <div>
+                <dt>Direção</dt>
+                <dd>Lorena Pavan</dd>
+              </div>
+              <div>
+                <dt>Arte</dt>
+                <dd>Lorena Pavan</dd>
+              </div>
+              <div>
+                <dt>Desenvolvimento</dt>
+                <dd>Lorena Pavan</dd>
+              </div>
+            </dl><button id="credits-close" class="secondary" type="button">Voltar</button>
+          </div>
+        </div>
+      </div>
+      <div class="mobile-controls" aria-label="Controles touch"><button data-key="left">◀</button><button
+          data-key="jump">▲</button><button data-key="right">▶</button><button data-key="sniff">🐽</button></div>
+    </section>
+    <footer class="instructions"><span><kbd>←</kbd><kbd>→</kbd> andar</span><span><kbd>Espaço</kbd>
+        pular</span><span><kbd>F</kbd> revelar segredos</span><span class="goal">Encontre o brinquedo
+        favorito!</span><span class="version-badge">🐾 v0.1.0</span></footer>
+  </main>
+  <script src="js/game.js?v=30"></script>
+</body>
+
+</html>

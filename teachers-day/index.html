@@ -1,0 +1,223 @@
+<!DOCTYPE html><html lang="pt-BR"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Desafio do Saber — Missão Professores</title>
+<style>
+:root{--deep:#176d70;--ink:#17484b;--pink:#ffdce8;--pink-border:#f2b8cc}*{box-sizing:border-box}body{margin:0;font-family:"Trebuchet MS",Arial,sans-serif;color:var(--ink);background:linear-gradient(145deg,#eafffc,#fff9eb);min-height:100vh}header{text-align:center;padding:18px;background:#bdeee9;border-bottom:4px solid #8bd4cc}h1{margin:0;font-size:clamp(1.5rem,5vw,2.1rem)}header p{margin:5px 0 0}main{max-width:760px;margin:auto;padding:18px 14px 32px}.progress{height:12px;background:white;border:1px solid #a9ddd6;border-radius:99px;overflow:hidden;margin:4px 0 20px}.bar{height:100%;width:0;background:linear-gradient(90deg,#78e1d7 0%,#bdeee9 48%,#ffd1e2 100%);transition:width .4s}.screen{display:none;animation:in .3s ease}.screen.active{display:block}@keyframes in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}.card{background:#ffffffed;border:2px solid #c5eae5;border-radius:24px;padding:clamp(18px,5vw,30px);box-shadow:0 7px 0 #d9f0ec;text-align:center}.stage{font-size:.8rem;text-transform:uppercase;letter-spacing:.08em;font-weight:bold;color:#398a89}h2{margin:9px 0 12px;font-size:clamp(1.4rem,5vw,2rem)}.prompt{font-size:1.08rem;line-height:1.55;max-width:560px;margin:14px auto}button{font:inherit;font-weight:bold;border:0;border-radius:13px;padding:12px 15px;cursor:pointer;transition:transform .12s}button:active{transform:scale(.98)}button:focus-visible{outline:3px solid #17484b;outline-offset:3px}.primary{background:var(--pink);color:#744458;border:2px solid var(--pink-border);box-shadow:0 4px #e8b4c8}.choices{display:grid;grid-template-columns:1fr;gap:10px;max-width:510px;margin:20px auto}.choice{background:#ffe5ee;border:2px solid #f2bfd0;color:#674354;text-align:left}.choice.correct{background:#f39abc;border-color:#d85f91;color:#5a2940;box-shadow:0 0 0 2px #ffd6e5}.choice.wrong{background:#ffe0e0;border-color:#e99b9b;color:#674354}.feedback{min-height:27px;font-weight:bold;margin:12px 0}.dice{font-size:90px;line-height:1.2;margin:12px auto;display:flex;align-items:center;justify-content:center;filter:drop-shadow(0 5px 0 #d3e9e5)}.dice.result{width:116px;height:116px;font-size:64px;font-weight:1000;color:#176d70;background:linear-gradient(135deg,#c9f5ef 0%,#aee8e5 45%,#ffd9e7 100%);border:5px solid #fff;border-radius:23px;box-shadow:0 8px 0 #a9dcd6,0 12px 18px #17484b35,inset 0 3px 7px #ffffff;text-shadow:2px 3px 0 #d5a7bc;transform:perspective(400px) rotateX(7deg) rotateY(-7deg)}.rolling{animation:roll .7s ease}@keyframes roll{0%{transform:rotate(0) scale(1)}35%{transform:rotate(180deg) scale(1.15)}70%{transform:rotate(310deg) scale(.92)}100%{transform:rotate(360deg) scale(1)}}.collection{margin-top:22px;background:linear-gradient(135deg,#a9eee7 0%,#c8f2ef 45%,#ffd9e8 100%);border:2px solid #b7e7e2;border-radius:20px;padding:14px;box-shadow:0 0 0 3px #ffffffa8 inset}.collection h3,.collection #hint{color:#17484b;text-shadow:0 1px 1px #ffffffa8}.collection .pieces{background:#f3fffd;border:1px solid #c8e8e3;border-radius:14px;padding:8px}.collection h3{margin:0 0 10px}.pieces{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.piece{min-height:56px;display:flex;align-items:center;justify-content:center;text-align:center;padding:7px;background:#e2f4f1;border:1px dashed #9fd7d0;border-radius:12px;font-size:.9rem;font-weight:bold;color:var(--ink)}.piece.got{background:#ffd6e5;border:2px solid #e58caf;color:#6b3450;animation:pop .35s ease}@keyframes pop{50%{transform:scale(1.06)}}.puzzle-icon{display:inline-block;filter:hue-rotate(115deg) saturate(.72) brightness(1.08)}.puzzle-texture{width:100%;min-height:300px;display:flex;align-items:center;justify-content:center;text-align:center;padding:24px;border-radius:16px;border:5px solid white;box-shadow:0 5px 16px #17484b30;background-color:#ffeaf2;background-image:linear-gradient(135deg,#d9f7f2aa 0%,#ffe3edcc 100%),url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cg fill='none' stroke='%23b47b9a' stroke-width='2' opacity='.48'%3E%3Cpath d='M0 25 H28 C22 14 34 8 42 15 C47 19 45 25 42 25 H75 V50 C63 44 57 57 64 64 C67 67 71 67 75 64 V100 H50 V76 C39 83 30 71 37 63 C40 60 45 60 50 64 V50 H25 V25'/%3E%3Cpath d='M75 0 V25 C87 19 94 31 87 39 C84 42 79 42 75 38'/%3E%3Cpath d='M0 75 H25 C19 87 31 94 39 87 C42 84 42 79 38 75'/%3E%3C/g%3E%3C/svg%3E");}
+.connect-board{width:min(100%,390px);margin:18px auto 12px;touch-action:none;user-select:none;background:linear-gradient(135deg,#f2fffd,#fff4f8);border:3px solid #bdeee9;border-radius:18px;padding:8px;box-shadow:0 4px 0 #d9f0ec}
+.connect-board svg{display:block;width:100%;height:auto;touch-action:none}
+.connect-status{font-weight:bold;min-height:26px;margin:10px 0;color:#287f83}
+.connect-actions{display:flex;justify-content:center;gap:10px;flex-wrap:wrap}
+.connect-line{fill:none;stroke-linecap:round;stroke-linejoin:round;stroke-width:9;opacity:.92;pointer-events:none}
+.connect-node{fill:#fff;stroke:#9dcfc9;stroke-width:1.5}
+.connect-dot{stroke:#fff;stroke-width:3}
+.puzzle-heart{width:1em;height:1em;vertical-align:-.12em;fill:#f6bfd3;stroke:#dfa0b8;stroke-width:1}
+.connect-level{display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;margin:16px 0}
+.connect-level select{font:inherit;color:var(--ink);background:#fff4f8;border:2px solid #f2bfd0;border-radius:10px;padding:10px}
+.connect-level select:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+.connect-help{font-size:.9rem;color:#287f83}
+.final-note{font-size:clamp(1.7rem,7vw,3rem);font-weight:1000;line-height:1.12;color:#277f83;margin:20px 0;text-shadow:1px 2px #d7f0ec; background:linear-gradient(90deg,#247d82 0%,#478f91 50%,#bb7e9c 100%);background-clip:text;-webkit-background-clip:text;-webkit-text-fill-color:transparent;-webkit-text-stroke:1.2px #286f7a;text-shadow:0 1px 1px rgba(35,100,112,.18)}.hidden{display:none!important}@media(min-width:540px){.choices{grid-template-columns:1fr 1fr}}
+
+.turquoise-ball {
+  display: inline-block;
+  color: #8fe5df;
+  -webkit-text-stroke: 1px #62cfc7;
+  text-shadow: 0 1px 2px rgba(40, 130, 130, .18);
+}
+
+.final-signature {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 5px;
+  margin: 0 0 20px;
+  padding: 16px 38px 20px;
+  border: 1px solid #efbfd1;
+  border-radius: 20px;
+  background: linear-gradient(135deg,#fff5f9,#ffe4ee);
+  box-shadow: 0 5px 0 #f6dce6;
+  color: #85536b;
+}
+.signature-label { font-size: .75rem; font-weight: bold; letter-spacing: .12em; text-transform: uppercase; }
+.final-signature strong { font: italic bold clamp(2.2rem,8vw,3.3rem)/1.15 Georgia,serif; color: #985674; }
+.bonus-card { margin: 30px auto 0; max-width: 540px; padding: 24px; border: 2px solid #c5eae5; border-radius: 20px; background: linear-gradient(135deg,#f0fffc,#fff5f9); }
+.bonus-card h3 { margin: 8px 0 12px; font-size: clamp(1.2rem,4vw,1.5rem); }
+.bonus-card p { line-height: 1.6; }
+.bonus-link { display: inline-block; padding: 12px 18px; text-decoration: none; font-weight: bold; }
+.bonus-link:hover { background: #ffcedf; }
+.bonus-link:focus-visible { outline: 3px solid var(--ink); outline-offset: 4px; }
+.bonus-note { margin: 18px 0 0; font-size: .9rem; color: #42686b; }
+.celebration { position: fixed; inset: 0; overflow: hidden; pointer-events: none; z-index: 10; }
+.confetti { position: absolute; top: -24px; left: var(--left); width: 9px; height: 15px; background: var(--color); border-radius: 3px; opacity: 0; animation: confetti-fall var(--duration) var(--delay) linear both; }
+.confetti:nth-child(3n) { width: 11px; height: 11px; border-radius: 50%; }
+@keyframes confetti-fall {
+  0% { opacity: 0; transform: translate3d(0,-20px,0) rotate(0deg); }
+  8%,80% { opacity: .85; }
+  100% { opacity: 0; transform: translate3d(var(--drift),calc(100vh + 50px),0) rotate(var(--spin)); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .celebration { display: none; }
+  .screen { animation: none; }
+  .bar { transition: none; }
+}
+</style></head><body><header><h1>🌟 Desafio do Saber</h1><p>Uma missão especial para os professores!</p></header><main><div class="progress"><div class="bar" id="bar"></div></div>
+<section class="screen active" id="intro"><div class="card"><div class="stage">Missão especial</div><h2>O dado vai escolher sua missão!</h2><p class="prompt">Role o dado para sortear o tema da partida: lógica, palavras e conhecimento ou matemática. Resolva cinco desafios desse tema para conquistar as peças e liberar o puzzle final!</p><div style="font-size:62px">🎲</div><button class="primary" onclick="show('dicePage')">Começar ▶</button></div></section>
+<section class="screen" id="dicePage"><div class="card"><div class="stage">Preparação da partida</div><h2>🎲 Role para sortear o tema</h2><div id="dice" class="dice">🎲</div><p class="prompt" id="diceText">O dado vai escolher o tema desta partida.</p><button class="primary" id="rollBtn" onclick="roll()">Rolar o dado</button><div class="feedback" id="diceFeedback"></div><div id="diceNext" class="hidden"><button class="primary" onclick="show('q1')">Jogar o tema sorteado ➜</button></div></div></section>
+<section class="screen" id="q1"><div class="card"><div class="stage">Desafio 1 · Charada</div><h2>Quem sou eu?</h2><p class="prompt">Posso ser oferecida, mas não posso ser obrigada a ser aceita. Posso ser perdida sem deixar nada cair no chão. Sou conquistada e posso levar muito tempo para ser construída, mas apenas um instante para ser destruída.</p><div class="choices">
+<button class="choice" onclick="answer(1,false,this)">A) A reputação</button><button class="choice" onclick="answer(1,true,this)">B) A confiança</button><button class="choice" onclick="answer(1,false,this)">C) A paciência</button><button class="choice" onclick="answer(1,false,this)">D) A amizade</button></div><div class="feedback" id="fb1"></div><div id="next1" class="hidden"><button class="primary" onclick="show('q2')">Próxima página ➜</button></div></div></section>
+<section class="screen" id="q2"><div class="card"><div class="stage">Desafio 2 · Charada</div><h2>Quem sou eu?</h2><p class="prompt">Tenho muitas camadas, mas não sou roupa. Posso fazer você chorar, embora não tenha sentimentos. Quando me cortam, revelo ainda mais de mim.</p><div class="choices">
+<button class="choice" onclick="answer(2,false,this)">A) Um repolho</button><button class="choice" onclick="answer(2,false,this)">B) Uma alcachofra</button><button class="choice" onclick="answer(2,true,this)">C) Uma cebola</button><button class="choice" onclick="answer(2,false,this)">D) Um alho-poró</button></div><div class="feedback" id="fb2"></div><div id="next2" class="hidden"><button class="primary" onclick="show('q3')">Próxima página ➜</button></div></div></section>
+<section class="screen" id="q3"><div class="card"><div class="stage">Desafio 3 · Matemática</div><h2>➗ Divisão de professora</h2><p class="prompt">Uma professora tem 252 adesivos para dividir igualmente entre 14 equipes. Quantos adesivos cada equipe recebe?</p><div class="choices"><button class="choice" onclick="answer(3,false,this)">A) 16 adesivos</button><button class="choice" onclick="answer(3,true,this)">B) 18 adesivos</button><button class="choice" onclick="answer(3,false,this)">C) 19 adesivos</button><button class="choice" onclick="answer(3,false,this)">D) 21 adesivos</button></div><div class="feedback" id="fb3"></div><div id="next3" class="hidden"><button class="primary" onclick="show('q4')">Próxima página ➜</button></div></div></section>
+<section class="screen" id="q4"><div class="card"><div class="stage">Desafio 4 · Pensamento lateral</div><h2>Quem sou eu?</h2><p class="prompt">Tenho cidades, mas não casas; tenho montanhas, mas não árvores; tenho água, mas não peixes. O que sou?</p><div class="choices"><button class="choice" onclick="answer(4,false,this)">A) Um globo terrestre</button><button class="choice" onclick="answer(4,true,this)">B) Um mapa</button><button class="choice" onclick="answer(4,false,this)">C) Uma fotografia aérea</button><button class="choice" onclick="answer(4,false,this)">D) Um livro de geografia</button></div><div class="feedback" id="fb4"></div><div id="next4" class="hidden"><button class="primary" onclick="show('q5')">Última charada ➜</button></div></div></section>
+<section class="screen" id="q5"><div class="card"><div class="stage">Desafio 5 · Charada final</div><h2>O que sou?</h2><p class="prompt">Quanto mais você tira de mim, maior eu fico. Não sou uma dívida nem uma tarefa. O que sou?</p><div class="choices"><button class="choice" onclick="answer(5,false,this)">A) Uma pilha de livros</button><button class="choice" onclick="answer(5,false,this)">B) Uma sombra</button><button class="choice" onclick="answer(5,true,this)">C) Um buraco</button><button class="choice" onclick="answer(5,false,this)">D) Um segredo</button></div><div class="feedback" id="fb5"></div><div id="next5" class="hidden"><button class="primary" onclick="show('connectPuzzle')">Puzzle extra: ligar os pontos ➜</button></div></div></section>
+<section class="screen" id="connectPuzzle"><div class="card"><div class="stage">Desafio extra · Ligue os pontos</div><h2><span class="turquoise-ball" aria-hidden="true">●</span> <svg class="puzzle-heart" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21S2 14 2 7a5 5 0 0 1 10-1A5 5 0 0 1 22 7c0 7-10 14-10 14Z"/></svg> Conecte as cores!</h2><p class="prompt">Ligue cada par da mesma cor: rosa com rosa, azul-turquesa com azul-turquesa e lilás com lilás. Toque numa bolinha e arraste até a outra, sem cruzar as linhas nem passar pelos bloqueios. Planeje as curvas e deixe espaço para as outras cores!</p><div class="connect-level"><label for="connectLevel">Dificuldade</label><select id="connectLevel" onchange="newConnectBoard()"><option value="easy">Fácil</option><option value="medium" selected>Médio</option><option value="hard">Difícil</option></select></div><p class="connect-help" id="connectHelp"></p><div class="connect-board"><svg id="connectSvg" viewBox="0 0 320 320" role="img" aria-label="Tabuleiro de ligar os pontos rosa, azul-turquesa e lilás"><g id="gridLines" stroke="#d6e9e6" stroke-width="2"></g><g id="blocksLayer"></g><g id="pathLayer"></g><g id="nodesLayer"></g></svg></div><div class="connect-status" id="connectStatus" aria-live="polite"></div><div class="connect-actions"><button class="primary" onclick="resetConnect()">↻ Recomeçar ligações</button><button class="primary" onclick="newConnectBoard()">Novo tabuleiro</button><button class="primary hidden" id="connectNext" onclick="show('final')">Concluir missão ➜</button></div></div></section>
+<section class="screen" id="final"><div class="card"><div class="stage">Missão concluída!</div><h2><span class="puzzle-icon">🧩</span> O quebra-cabeça está completo!</h2><div class="puzzle-texture"><div class="final-note">Feliz Dia dos<br>Professores! 🩵</div><div class="final-signature"><span class="signature-label">Para a professora</span><strong>Aline</strong></div></div><p class="prompt">Obrigado por ensinar, inspirar e ajudar tantas pessoas a crescer.</p><button class="primary" onclick="restart()">🔁 Jogar novamente</button>
+<aside class="bonus-card" aria-labelledby="bonus-title">
+  <span class="stage">Um presente bônus</span>
+  <h3 id="bonus-title">Uma aventura extra, feita pela Lorena</h3>
+  <p>Professora Aline, preparei mais uma surpresa para você! Ajude a Cacau a encontrar seu brinquedo favorito no parque.</p>
+  <a class="primary bonus-link" href="../games/cacau-adventure/index.html">Jogar Cacau Adventure <span aria-hidden="true">➜</span></a>
+  <p class="bonus-note">Para aproveitar melhor, jogue no computador. No celular, experimente com a tela na horizontal.</p>
+</aside>
+</div></section>
+<section class="collection"><h3><span class="puzzle-icon">🧩</span> Peças colecionadas</h3><p id="hint">Cada resposta certa libera uma parte da mensagem.</p><div class="pieces"><div class="piece" id="p1">🔒 Peça 1</div><div class="piece" id="p2">🔒 Peça 2</div><div class="piece" id="p3">🔒 Peça 3</div><div class="piece" id="p4">🔒 Peça 4</div><div class="piece" id="p5">🔒 Peça 5</div></div></section></main><footer style="text-align:center;padding:14px;color:#287f83">Feito com carinho para celebrar quem ensina 💗</footer>
+<script>
+let rolled=false;const solved={1:false,2:false,3:false,4:false,5:false};
+const questions={
+ logic:[
+  {title:'Quem sou eu?',prompt:'Tenho cidades, mas não casas; tenho montanhas, mas não árvores; tenho água, mas não peixes. O que sou?',choices:['Um globo terrestre','Um mapa','Uma fotografia aérea','Um livro de geografia'],correct:1,piece:'Mapa'},
+  {title:'O que sou?',prompt:'Quanto mais você tira de mim, maior eu fico. Não sou uma dívida nem uma tarefa. O que sou?',choices:['Uma pilha de livros','Uma sombra','Um buraco','Um segredo'],correct:2,piece:'Buraco'},
+  {title:'Continue a sequência',prompt:'Observe os números: 2, 4, 8, 16. Cada número segue a mesma regra. Qual vem depois?',choices:['18','24','30','32'],correct:3,piece:'32'},
+  {title:'Qual caixa escolher?',prompt:'Três caixas têm as etiquetas “Lápis”, “Canetas” e “Lápis e canetas”. Todas as etiquetas estão erradas. De qual caixa você deve tirar um único objeto para descobrir o conteúdo das três?',choices:['Da caixa “Lápis”','Da caixa “Canetas”','Da caixa “Lápis e canetas”','De qualquer caixa'],correct:2,piece:'Caixa mista'},
+  {title:'Uma corrida diferente',prompt:'Durante uma corrida, você ultrapassa a pessoa que está em segundo lugar. Ninguém mais muda de posição. Em que lugar você fica?',choices:['Primeiro','Segundo','Terceiro','Último'],correct:1,piece:'Segundo lugar'}
+ ],
+ words:[
+  {title:'Quem sou eu?',prompt:'Posso ser oferecida, mas não posso ser obrigada a ser aceita. Posso ser perdida sem deixar nada cair no chão. Sou conquistada e posso levar muito tempo para ser construída, mas apenas um instante para ser destruída.',choices:['A reputação','A confiança','A paciência','A amizade'],correct:1,piece:'Confiança'},
+  {title:'Quem sou eu?',prompt:'Tenho muitas camadas, mas não sou roupa. Posso fazer você chorar, embora não tenha sentimentos. Quando me cortam, revelo ainda mais de mim.',choices:['Um repolho','Uma alcachofra','Uma cebola','Um alho-poró'],correct:2,piece:'Cebola'},
+  {title:'Palavras que aproximam',prompt:'Qual palavra tem sentido semelhante ao de “generoso”?',choices:['Egoísta','Solidário','Distraído','Impaciente'],correct:1,piece:'Solidário'},
+  {title:'Uma coleção de histórias',prompt:'Como se chama o conjunto de livros de uma biblioteca ou de uma pessoa?',choices:['Arquipélago','Rebanho','Acervo','Cardume'],correct:2,piece:'Acervo'},
+  {title:'Encontre a palavra',prompt:'Qual destas palavras é um verbo no infinitivo?',choices:['Aprendizagem','Curioso','Escola','Ensinar'],correct:3,piece:'Ensinar'}
+ ],
+ math:[
+  {title:'Divisão de professora',prompt:'Uma professora tem 252 adesivos para dividir igualmente entre 14 equipes. Quantos adesivos cada equipe recebe?',choices:['16 adesivos','18 adesivos','19 adesivos','21 adesivos'],correct:1,piece:'18 adesivos'},
+  {title:'Livros para a turma',prompt:'Uma sala tem 6 prateleiras com 8 livros em cada uma. Quantos livros há ao todo?',choices:['14 livros','42 livros','48 livros','56 livros'],correct:2,piece:'48 livros'},
+  {title:'Tempo de aprender',prompt:'Uma atividade começa às 9h20 e dura 45 minutos. A que horas ela termina?',choices:['9h55','10h05','10h15','10h20'],correct:1,piece:'10h05'},
+  {title:'Uma parte da turma',prompt:'Uma turma tem 32 estudantes. Um quarto deles participa do clube de leitura. Quantos estudantes participam?',choices:['4','6','8','16'],correct:2,piece:'8 estudantes'},
+  {title:'Desconto na papelaria',prompt:'Um material custa R$ 80 e está com desconto de 25%. Qual é o preço após o desconto?',choices:['R$ 20','R$ 55','R$ 60','R$ 75'],correct:2,piece:'R$ 60'}
+ ]
+};
+let activeQuestions=[];
+function prepareQuestions(theme,label){
+ newConnectBoard();
+ activeQuestions=questions[theme];
+ activeQuestions.forEach((question,index)=>{
+  const n=index+1,screen=document.getElementById('q'+n);
+  screen.querySelector('.stage').textContent='Desafio '+n+' de 5 · '+label;
+  screen.querySelector('h2').textContent=question.title;
+  screen.querySelector('.prompt').textContent=question.prompt;
+  screen.querySelectorAll('.choice').forEach((button,choice)=>{
+   button.textContent=String.fromCharCode(65+choice)+') '+question.choices[choice];
+   button.onclick=()=>answer(n,choice===question.correct,button);
+  });
+  screen.querySelector('#next'+n+' button').textContent=n===5?'Puzzle extra: ligar os pontos ➜':'Próximo desafio ➜';
+ });
+}
+let celebrationTimer;
+function celebrateFinal(){
+ clearTimeout(celebrationTimer);
+ document.querySelector('.celebration')?.remove();
+ if(window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+ const layer=document.createElement('div');layer.className='celebration';layer.setAttribute('aria-hidden','true');
+ const colors=['#f3b5ce','#8bded9','#c6b5f5','#f4d79d','#bdeee9'];
+ for(let i=0;i<70;i++){
+  const piece=document.createElement('span');piece.className='confetti';
+  piece.style.setProperty('--left',((i+Math.random())/70*100)+'%');
+  piece.style.setProperty('--color',colors[i%colors.length]);
+  piece.style.setProperty('--duration',(5+Math.random()*3)+'s');
+  piece.style.setProperty('--delay',(Math.random()*1.5)+'s');
+  piece.style.setProperty('--drift',(Math.random()*160-80)+'px');
+  piece.style.setProperty('--spin',(Math.random()*1080-540)+'deg');
+  layer.appendChild(piece);
+ }
+ document.body.appendChild(layer);
+ celebrationTimer=setTimeout(()=>layer.remove(),10000);
+}
+function show(id){clearTimeout(celebrationTimer);document.querySelector('.celebration')?.remove();document.querySelectorAll('.screen').forEach(s=>s.classList.toggle('active',s.id===id));document.getElementById('bar').style.width=({intro:0,dicePage:5,q1:20,q2:35,q3:50,q4:65,q5:78,connectPuzzle:90,final:100}[id])+'%';window.scrollTo({top:0,behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'});if(id==='final')celebrateFinal()}
+function roll(){if(rolled)return;rolled=true;let d=document.getElementById('dice'),b=document.getElementById('rollBtn');d.classList.remove('rolling');void d.offsetWidth;d.classList.add('rolling');b.disabled=true;document.getElementById('diceText').textContent='Girando...';setTimeout(()=>{let n=Math.floor(Math.random()*6)+1;d.textContent=String(n);d.classList.add('result');let cat=n<=2?'Lógica':n<=4?'Palavras e conhecimento':'Matemática';prepareQuestions(n<=2?'logic':n<=4?'words':'math',cat);document.getElementById('diceText').textContent='Saiu '+n+'! Tema da partida: '+cat+'.';document.getElementById('diceFeedback').textContent='Resolva os cinco desafios deste tema para conquistar as peças!';b.classList.add('hidden');document.getElementById('diceNext').classList.remove('hidden')},700)}
+function answer(n,ok,btn){if(solved[n])return;let f=document.getElementById('fb'+n);if(!ok){f.textContent='Ainda não! Pense nas pistas e tente outra opção. 🙂';btn.classList.add('wrong');setTimeout(()=>btn.classList.remove('wrong'),650);return}solved[n]=true;btn.classList.add('correct');f.textContent=n===5?'🎉 Você resolveu todos os desafios e desbloqueou o puzzle extra!':'✨ Muito bem! Você conquistou uma peça!';document.querySelectorAll('#q'+n+' .choice').forEach(b=>b.disabled=true);document.getElementById('next'+n).classList.remove('hidden');let p=document.getElementById('p'+n);p.classList.add('got');p.textContent='💗 '+activeQuestions[n-1].piece;document.getElementById('hint').textContent='Desafios resolvidos: '+Object.values(solved).filter(Boolean).length+' de 5.'}
+
+const cp={pink:{color:'#f3a9c7',start:[0,0],end:[6,2],path:[],name:'rosa'},blue:{color:'#8bded9',start:[0,6],end:[6,4],path:[],name:'azul-turquesa'},lilac:{color:'#c6b5f5',start:[0,3],end:[6,3],path:[],name:'lilás'}};
+// Os trajetos de referência não se cruzam e garantem solução em todas as transformações.
+const connectBoards={
+ easy:{routes:[[[0,1],[6,1]],[[0,3],[6,3]],[[0,5],[6,5]]],blocks:[],help:'Fácil: pratique as ligações, sem bloqueios.'},
+ medium:{routes:[[[0,0],[0,6],[6,6],[6,0]],[[1,0],[1,3],[5,3],[5,0]],[[2,0],[2,2],[4,2],[4,0]]],blocks:[[3,0],[3,1]],help:'Médio: contorne os bloqueios e reserve espaço para cada cor.'},
+  hard:{blocks:[],help:'Difícil: ligue os cinco pares e preencha todas as 49 casas, sem cruzar caminhos. Toque numa ponta para refazer uma ligação.'}
+};
+let connectBlocks=[],lastConnectBoard='';
+function generateHardRoutes(){
+ const snake=Array.from({length:49},(_,i)=>{const y=Math.floor(i/7);return [y%2?6-i%7:i%7,y]});
+ for(let attempt=0;attempt<80;attempt++){
+  let path=snake.slice();
+  // Backbite reversals preserve a unique, adjacent path covering the whole grid.
+  for(let step=0;step<400;step++){
+   if(Math.random()<.5)path.reverse();
+   const head=path[0],neighbors=[];
+   for(let i=2;i<path.length;i++)if(Math.abs(head[0]-path[i][0])+Math.abs(head[1]-path[i][1])===1)neighbors.push(i);
+   if(neighbors.length){const i=neighbors[Math.floor(Math.random()*neighbors.length)];path=path.slice(0,i).reverse().concat(path.slice(i))}
+  }
+  const lengths=[5,5,5,5,5];
+  for(let i=0;i<24;i++)lengths[Math.floor(Math.random()*5)]++;
+  let offset=0;const routes=lengths.map(length=>{const route=path.slice(offset,offset+length);offset+=length;return route});
+  if(routes.every(route=>{const a=route[0],b=route[route.length-1];return Math.abs(a[0]-b[0])+Math.abs(a[1]-b[1])>=3}))return routes;
+ }
+ // Bounded fallback: four full rows and the remaining three-row snake.
+ return [snake.slice(0,7),snake.slice(7,14),snake.slice(14,21),snake.slice(21,28),snake.slice(28)];
+}
+function newConnectBoard(){
+  const level=document.getElementById('connectLevel').value,board=connectBoards[level];
+  if(level==='hard'){
+   cp.orange={color:'#eea34b',path:[],name:'laranja'};
+   cp.green={color:'#65ad70',path:[],name:'verde'};
+   board.routes=generateHardRoutes();
+  }else{delete cp.orange;delete cp.green}
+ const variants=[];
+  for(let rotation=0;rotation<4;rotation++)for(let mirror=0;mirror<2;mirror++)for(let shift=0;shift<board.routes.length;shift++){
+  const signature=level+':'+rotation+':'+mirror+':'+shift;
+  if(signature!==lastConnectBoard)variants.push({rotation,mirror,shift,signature});
+ }
+ const variant=variants[Math.floor(Math.random()*variants.length)];
+ function transform(point){let [x,y]=point;if(variant.mirror)x=6-x;for(let i=0;i<variant.rotation;i++)[x,y]=[6-y,x];return [x,y]}
+ Object.values(cp).forEach((item,index)=>{
+   const route=board.routes[(index+variant.shift)%board.routes.length];
+  item.start=transform(route[0]);item.end=transform(route[route.length-1]);
+ });
+ connectBlocks=board.blocks.map(transform);lastConnectBoard=variant.signature;
+  document.getElementById('connectHelp').textContent=board.help;
+  const names=Object.values(cp).map(item=>item.name).join(', ');
+  document.getElementById('connectSvg').setAttribute('aria-label','Tabuleiro de ligar os pontos: '+names);
+  document.querySelector('#connectPuzzle .prompt').textContent='Ligue cada par da mesma cor: '+names+'. Toque numa bolinha e arraste até a outra, sem cruzar as linhas nem passar pelos bloqueios. '+(level==='hard'?'Preencha todas as 49 casas! ':'')+'Toque numa ponta para refazer uma ligação.';
+ const blocks=document.getElementById('blocksLayer');blocks.innerHTML='';
+ for(const pt of connectBlocks){const a=pointPos(pt);blocks.insertAdjacentHTML('beforeend',`<rect x="${a.x-15}" y="${a.y-15}" width="30" height="30" rx="7" fill="#d6d9e7" stroke="#919bb5" stroke-width="2"/><path d="M${a.x-5} ${a.y-5}l10 10m0-10l-10 10" stroke="#78849e" stroke-width="2"/>`)}
+ renderConnectNodes();resetConnect();
+}
+function renderConnectNodes(){
+ const nodes=document.getElementById('nodesLayer');nodes.innerHTML='';
+ for(const [key,item] of Object.entries(cp)){for(const [kind,pt] of [['start',item.start],['end',item.end]]){let a=pointPos(pt);nodes.insertAdjacentHTML('beforeend',`<circle cx="${a.x}" cy="${a.y}" r="23" fill="transparent" stroke="transparent" data-color="${key}" data-kind="${kind}"/><circle cx="${a.x}" cy="${a.y}" r="15" fill="${item.color}" stroke="white" stroke-width="4" pointer-events="none"/>`)}}
+}
+let activeConnect=null,activeTarget=null,connectSolved=false;
+function pointPos(pt){return {x:22+pt[0]*46,y:22+pt[1]*46}}
+function setupConnect(){
+ const svg=document.getElementById('connectSvg'),grid=document.getElementById('gridLines');
+ if(svg.dataset.ready)return;svg.dataset.ready='1';
+ for(let r=0;r<7;r++)for(let c=0;c<7;c++){let a=pointPos([c,r]);if(c<6){let b=pointPos([c+1,r]);grid.insertAdjacentHTML('beforeend',`<line x1="${a.x}" y1="${a.y}" x2="${b.x}" y2="${b.y}"/>`)}if(r<6){let b=pointPos([c,r+1]);grid.insertAdjacentHTML('beforeend',`<line x1="${a.x}" y1="${a.y}" x2="${b.x}" y2="${b.y}"/>`)}}
+  svg.addEventListener('pointerdown',connectPointerDown);svg.addEventListener('pointermove',connectPointerMove);svg.addEventListener('pointerup',connectPointerUp);svg.addEventListener('pointercancel',connectPointerUp);newConnectBoard();
+}
+function nearestNode(evt){let svg=document.getElementById('connectSvg'),rect=svg.getBoundingClientRect(),x=(evt.clientX-rect.left)*320/rect.width,y=(evt.clientY-rect.top)*320/rect.height,c=Math.round((x-22)/46),r=Math.round((y-22)/46);if(c<0||c>6||r<0||r>6)return null;let q=pointPos([c,r]);return Math.hypot(q.x-x,q.y-y)<34?[c,r]:null}
+function samePoint(a,b){return a&&b&&a[0]===b[0]&&a[1]===b[1]}
+function connectPointerDown(e){let node=e.target.closest('circle[data-color]');if(!node)return;let key=node.dataset.color,kind=node.dataset.kind,item=cp[key];item.done=false;connectSolved=false;document.getElementById('connectNext').classList.add('hidden');activeConnect=key;activeTarget=(kind==='start'?item.end:item.start).slice();item.path=[(kind==='start'?item.start:item.end).slice()];try{document.getElementById('connectSvg').setPointerCapture(e.pointerId)}catch(_){}document.getElementById('connectStatus').textContent='Arraste o dedo ou o mouse até a bolinha da mesma cor. Você pode fazer curvas!';drawConnect();e.preventDefault()}
+function addConnectStep(pt){if(!activeConnect||!pt)return;if(pt[0]<0||pt[0]>6||pt[1]<0||pt[1]>6||connectBlocks.some(q=>samePoint(q,pt)))return false;let item=cp[activeConnect],path=item.path,last=path[path.length-1];if(samePoint(last,pt))return true;if(Math.abs(last[0]-pt[0])+Math.abs(last[1]-pt[1])!==1)return false;if(path.length>1&&samePoint(path[path.length-2],pt)){path.pop();drawConnect();return true}if(path.some(q=>samePoint(q,pt)))return false;for(const [key,other] of Object.entries(cp)){if(key===activeConnect)continue;if(samePoint(other.start,pt)||samePoint(other.end,pt)||other.path.some(q=>samePoint(q,pt)))return false}path.push(pt);drawConnect();if(samePoint(pt,activeTarget)){item.done=true;activeConnect=null;activeTarget=null;const colors=Object.values(cp),filled=colors.reduce((sum,color)=>sum+color.path.length,0),total=49-connectBlocks.length,hard=document.getElementById('connectLevel').value==='hard';if(colors.every(color=>color.done)&&(!hard||filled===total)){connectSolved=true;document.getElementById('connectStatus').textContent='Conseguiu! Os '+colors.length+' pares estão ligados'+(hard?' e todas as casas preenchidas!':'!');document.getElementById('connectNext').classList.remove('hidden')}else document.getElementById('connectStatus').textContent='Pares ligados: '+colors.filter(color=>color.done).length+' de '+colors.length+'.'+(hard?' Casas preenchidas: '+filled+' de '+total+'. Toque numa ponta para refazer uma ligação.':' Agora ligue uma das outras cores.')}return true}
+function connectPointerMove(e){if(!activeConnect)return;let pt=nearestNode(e);if(!pt)return;let path=cp[activeConnect].path,last=path[path.length-1],dx=pt[0]-last[0],dy=pt[1]-last[1];if(Math.abs(dx)+Math.abs(dy)<=1){if(!addConnectStep(pt)){document.getElementById('connectStatus').textContent='Essa casa está ocupada. Continue por outro caminho.'}return}/* Touch events can skip dots; fill the skipped dots along the dominant direction. */let c=last[0],r=last[1],steps=Math.max(Math.abs(dx),Math.abs(dy));for(let i=0;i<steps;i++){let remainingX=pt[0]-c,remainingY=pt[1]-r;if(Math.abs(remainingX)>=Math.abs(remainingY)&&remainingX!==0)c+=Math.sign(remainingX);else if(remainingY!==0)r+=Math.sign(remainingY);if(!addConnectStep([c,r])){document.getElementById('connectStatus').textContent='Essa casa está ocupada. Faça uma curva por outro caminho.';break}if(!activeConnect)break}e.preventDefault()}
+function connectPointerUp(e){if(!activeConnect)return;connectPointerMove(e);if(!activeConnect)return;let item=cp[activeConnect];if(!item.done){item.path=[];document.getElementById('connectStatus').textContent='Não tem problema! Tente de novo, arrastando de uma bolinha até a outra.';drawConnect()}activeConnect=null;activeTarget=null}
+function resetActivePath(message){if(activeConnect)cp[activeConnect].path=[];activeConnect=null;activeTarget=null;document.getElementById('connectStatus').textContent=message;drawConnect()}
+function drawConnect(){let layer=document.getElementById('pathLayer');if(!layer)return;layer.innerHTML='';for(const item of Object.values(cp)){if(item.path.length>1){let pts=item.path.map(p=>{let q=pointPos(p);return q.x+','+q.y}).join(' ');layer.insertAdjacentHTML('beforeend',`<polyline class="connect-line" points="${pts}" stroke="${item.color}"/>`)}}}
+function resetConnect(){for(const item of Object.values(cp)){item.path=[];item.done=false}activeConnect=null;activeTarget=null;connectSolved=false;document.getElementById('connectNext').classList.add('hidden');document.getElementById('connectStatus').textContent='Comece por qualquer cor. Ligue os '+Object.keys(cp).length+' pares sem cruzar os caminhos!'+(document.getElementById('connectLevel').value==='hard'?' Preencha todas as 49 casas.':'');drawConnect()}
+
+function restart(){resetConnect();rolled=false;activeQuestions=[];Object.keys(solved).forEach(k=>solved[k]=false);document.getElementById('dice').textContent='🎲';document.getElementById('dice').classList.remove('result','rolling');document.getElementById('rollBtn').disabled=false;document.getElementById('rollBtn').classList.remove('hidden');document.getElementById('diceText').textContent='O dado vai escolher o tema desta partida.';document.getElementById('diceFeedback').textContent='';document.getElementById('diceNext').classList.add('hidden');[1,2,3,4,5].forEach(n=>{document.getElementById('fb'+n).textContent='';document.getElementById('next'+n).classList.add('hidden');document.querySelectorAll('#q'+n+' .choice').forEach(b=>{b.disabled=false;b.classList.remove('correct','wrong')})});[1,2,3,4,5].forEach(n=>{let p=document.getElementById('p'+n);p.classList.remove('got');p.textContent='🔒 Peça '+n});document.getElementById('hint').textContent='Cada resposta certa libera uma parte da mensagem.';show('dicePage')}
+document.addEventListener('DOMContentLoaded',setupConnect);
+</script></body></html>

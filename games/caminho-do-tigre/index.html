@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Caminho do Tigre</title>
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div class="game-wrapper">
+
+    <header class="hud hud-top">
+      <div class="hud-box hud-lives">
+        <span class="hud-label">VIDAS</span>
+        <span id="lives-display" class="hearts">❤️❤️❤️</span>
+      </div>
+
+      <div class="hud-box hud-title">
+        <h1>CAMINHO DO <span class="accent">TIGRE</span></h1>
+        <p id="level-label" class="hud-subtitle">FASE 1 — TREINO NO DOJO</p>
+      </div>
+
+      <div class="hud-box hud-score">
+        <span class="hud-label">PONTOS</span>
+        <span id="score-display" class="score-value">0000</span>
+      </div>
+    </header>
+
+    <main class="game-container">
+      <canvas id="game-canvas" width="960" height="540"></canvas>
+    </main>
+
+    <section class="panels">
+      <div class="panel panel-controls">
+        <h2>CONTROLES</h2>
+        <div class="control-buttons">
+          <button class="ctrl-btn" data-action="left" aria-label="Andar para esquerda">◀<span>ANDAR</span></button>
+          <button class="ctrl-btn" data-action="right" aria-label="Andar para direita">▶<span>ANDAR</span></button>
+          <button class="ctrl-btn" data-action="jump" aria-label="Pular">▲<span>PULAR</span></button>
+          <button class="ctrl-btn ctrl-attack" data-action="attack" aria-label="Atacar">👊<span>ATACAR</span></button>
+          <button class="ctrl-btn ctrl-defend" data-action="defend" aria-label="Defender">🛡️<span>DEFENDER</span></button>
+        </div>
+        <p class="key-hints">
+          Teclado: <kbd>&larr;</kbd><kbd>&rarr;</kbd> mover · <kbd>&uarr;</kbd>/<kbd>Espaço</kbd> pular ·
+          <kbd>Z</kbd> atacar · <kbd>X</kbd> defender · <kbd>C</kbd> especial
+        </p>
+      </div>
+
+      <div class="panel panel-howto">
+        <h2>COMO JOGAR</h2>
+        <ol>
+          <li>Aproxime-se do inimigo.</li>
+          <li>Ataque para diminuir a vida dele.</li>
+          <li>Defenda ou desvie dos ataques.</li>
+          <li>Derrote o inimigo e pegue a medalha.</li>
+          <li>Vença os quatro lutadores e enfrente o Tigre.</li>
+        </ol>
+      </div>
+    </section>
+
+  </div>
+
+  <script src="js/core/input.js"></script>
+  <script src="js/entities/player.js"></script>
+  <script src="js/scenes/dojoBackground.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

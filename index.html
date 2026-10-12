@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="O laboratório de código da nossa família: jogos, aventuras e homenagens feitos com criatividade e carinho.">
+  <meta name="theme-color" content="#f6f5ef">
+  <title>Kids Code Lab | Projetos da família</title>
+  <style>
+    :root { color-scheme: light; --paper: #f6f5ef; --ink: #203d35; --muted: #54665d; --line: #d8dfd5; }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--paper); color: var(--ink); font-family: "Trebuchet MS", Arial, sans-serif; line-height: 1.6; }
+    a { color: inherit; }
+    a:focus-visible { outline: 3px solid #b44b28; outline-offset: 6px; }
+    .skip-link { position: absolute; top: 12px; left: 12px; padding: 10px 16px; background: white; transform: translateY(-160%); z-index: 2; }
+    .skip-link:focus { transform: none; }
+    .container { width: min(1080px, calc(100% - 40px)); margin-inline: auto; }
+    header { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding-block: 28px; border-bottom: 1px solid var(--line); }
+    .brand { display: flex; align-items: center; gap: 12px; font-size: 1.1rem; font-weight: bold; text-decoration: none; }
+    .brand-mark { display: grid; place-items: center; width: 42px; height: 42px; border-radius: 12px; background: var(--ink); color: #d7ed9c; font-family: monospace; }
+    .header-note, .eyebrow, .tag, .project-number { font-family: "Courier New", monospace; }
+    .header-note { color: var(--muted); font-size: .8rem; }
+    .intro { padding: 64px 0 40px; max-width: 740px; }
+    .eyebrow { margin: 0 0 16px; font-size: .75rem; font-weight: bold; letter-spacing: .13em; text-transform: uppercase; }
+    h1 { font-size: clamp(2.6rem, 6vw, 4.4rem); line-height: 1.08; letter-spacing: -.055em; margin: 0 0 22px; }
+    h1 span { color: #627d37; }
+    .intro > p:last-child { max-width: 570px; margin: 0; font-size: 1.1rem; color: var(--muted); }
+    .featured { display: grid; grid-template-columns: 1.35fr 1fr; align-items: center; gap: 32px; padding: 42px; border: 1px solid #c5d6b6; border-radius: 24px; background: #e5edda; }
+    .tag { display: inline-block; padding: 5px 10px; border: 1px solid #b7c6a7; border-radius: 6px; font-size: .72rem; font-weight: bold; }
+    h2 { margin: 18px 0 12px; font-size: clamp(1.8rem, 4vw, 2.6rem); line-height: 1.15; letter-spacing: -.035em; }
+    .featured p { max-width: 460px; color: #42573c; margin: 0 0 26px; }
+    .button { display: inline-flex; align-items: center; justify-content: space-between; gap: 24px; padding: 14px 20px; border-radius: 10px; background: var(--ink); color: white; text-decoration: none; font-weight: bold; transition: background .2s; }
+    .button:hover { background: #345c4f; }
+    .illustration { position: relative; display: grid; place-items: center; min-height: 230px; }
+    .illustration::before { content: ""; position: absolute; width: 220px; height: 220px; border: 1px dashed #a0b18c; border-radius: 50%; }
+    .note { position: relative; width: 210px; padding: 28px 22px; background: #fffdf4; border: 1px solid #dadfc9; border-radius: 4px 18px 18px 4px; box-shadow: 10px 12px 0 #ccdabd; transform: rotate(-7deg); }
+    .note-label { font: .65rem "Courier New", monospace; letter-spacing: .13em; text-transform: uppercase; }
+    .note strong { display: block; margin: 16px 0; font: italic 1.75rem/1.15 Georgia, serif; }
+    .note-line { display: block; height: 1px; background: #d7dccb; margin-top: 12px; }
+    .projects { padding-block: 48px 64px; }
+    .section-heading { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; margin-bottom: 20px; }
+    .section-heading h2 { font-size: 1.5rem; margin: 0; }
+    .section-heading span { color: var(--muted); font-size: .85rem; }
+    .game-card { display: grid; grid-template-columns: 300px 1fr; overflow: hidden; border: 1px solid var(--line); border-radius: 18px; background: #fffdf8; text-decoration: none; transition: border-color .2s; }
+    .game-card:hover { border-color: #627d37; }
+    .game-art { display: grid; place-items: center; background: #f3e5cd; padding: 28px; }
+    .game-art img { display: block; width: 100%; max-width: 240px; height: 160px; object-fit: contain; }
+    .game-info { padding: 28px 32px; }
+    .project-number { font-size: .7rem; letter-spacing: .08em; color: var(--muted); }
+    h3 { font-size: 1.6rem; letter-spacing: -.03em; margin: 8px 0; }
+    .game-info p { margin: 0 0 16px; color: var(--muted); }
+    .game-cta { font-weight: bold; }
+    footer { display: flex; justify-content: space-between; gap: 16px; padding-block: 24px 32px; border-top: 1px solid var(--line); font-size: .8rem; color: var(--muted); }
+    footer p { margin: 0; }
+    @media (max-width: 640px) {
+      .container { width: calc(100% - 32px); }
+      header { padding-block: 20px; }
+      .header-note { display: none; }
+      .intro { padding-top: 40px; }
+      .featured { grid-template-columns: 1fr; padding: 28px 24px; gap: 24px; }
+      .illustration { min-height: 220px; }
+      .game-card { grid-template-columns: 1fr; }
+      .game-info { padding: 24px; }
+      .section-heading, footer { align-items: flex-start; flex-direction: column; gap: 6px; }
+    }
+    @media (prefers-reduced-motion: reduce) { .button, .game-card { transition: none; } }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+  <div class="container">
+    <header>
+      <a class="brand" href="index.html" aria-label="Kids Code Lab, início"><span class="brand-mark" aria-hidden="true">&lt;/&gt;</span> Kids Code Lab</a>
+      <span class="header-note">Pequenas ideias. Grandes descobertas.</span>
+    </header>
+    <main id="conteudo">
+      <section class="intro" aria-labelledby="titulo">
+        <p class="eyebrow">Nosso laboratório em família</p>
+        <h1>Código, criatividade<br>e um pouco de <span>magia.</span></h1>
+        <p>Um cantinho para compartilhar o que criamos juntos. Por aqui, ideias viram jogos, descobertas e presentes feitos com carinho.</p>
+      </section>
+      <section class="featured" aria-labelledby="homenagem-titulo">
+        <div>
+          <span class="tag">PROJETO EM DESTAQUE</span>
+          <h2 id="homenagem-titulo">Para quem nos ensina<br>a ir mais longe.</h2>
+          <p>Uma homenagem aos professores em forma de missão: resolva desafios, reúna as peças e descubra uma mensagem especial.</p>
+          <a class="button" href="teachers-day/index.html">Explorar a homenagem <span aria-hidden="true">&rarr;</span></a>
+        </div>
+        <div class="illustration" aria-hidden="true">
+          <div class="note"><span class="note-label">Feito com carinho</span><strong>Ensinar é<br>plantar futuros.</strong><span class="note-line"></span><span class="note-line"></span></div>
+        </div>
+      </section>
+      <section class="projects" aria-labelledby="jogos-titulo">
+        <div class="section-heading"><h2 id="jogos-titulo">Hora de uma aventura</h2><span>Jogos criados em família</span></div>
+        <a class="game-card" href="games/cacau-adventure/index.html">
+          <div class="game-art"><img src="games/cacau-adventure/assets/cacau-adventure-logo.png" alt="" loading="lazy" width="240" height="160"></div>
+          <div class="game-info">
+            <span class="project-number">01 / JOGO DE PLATAFORMA</span>
+            <h3>Cacau Adventure</h3>
+            <p>Ajude a Cacau a explorar o parque e encontrar seu brinquedo favorito. Uma aventura criada por Lorena Pavan.</p>
+            <span class="game-cta">Jogar agora <span aria-hidden="true">&rarr;</span></span>
+          </div>
+        </a>
+      </section>
+    </main>
+    <footer><p>Kids Code Lab. Feito em família, para explorar juntos.</p><p>HTML + CSS + JS · Criatividade sem limites</p></footer>
+  </div>
+</body>
+</html>
