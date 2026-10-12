@@ -22,6 +22,19 @@
   text-shadow: 0 1px 2px rgba(40, 130, 130, .18);
 }
 
+.puzzle-texture {
+  flex-direction: column;
+  min-width: 0;
+  padding: clamp(12px, 4vw, 24px);
+  container-type: inline-size;
+}
+.final-note {
+  max-width: 100%;
+  font-size: clamp(1.35rem, 6vw, 3rem);
+  font-size: clamp(1.35rem, 10cqi, 3rem);
+  line-height: 1.2;
+  overflow-wrap: anywhere;
+}
 .final-signature {
   display: inline-flex;
   flex-direction: column;
@@ -33,6 +46,8 @@
   background: linear-gradient(135deg,#fff5f9,#ffe4ee);
   box-shadow: 0 5px 0 #f6dce6;
   color: #85536b;
+  max-width: 100%;
+  padding-inline: clamp(16px, 5vw, 38px);
 }
 .signature-label { font-size: .75rem; font-weight: bold; letter-spacing: .12em; text-transform: uppercase; }
 .final-signature strong { font: italic bold clamp(2.2rem,8vw,3.3rem)/1.15 Georgia,serif; color: #985674; }
